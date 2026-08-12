@@ -9,11 +9,20 @@ export const metadata: Metadata = {
 
 const DashboardProjectsPage = async () => {
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`, {
-    cache: "no-store",
-  });
-  const projects = await res.json();
-  console.log(projects.data.data)
+  let projects = { data: { data: [] } };
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`, {
+      cache: "no-store",
+    });
+    if (res.ok) {
+      projects = await res.json();
+    } else {
+      console.error("Failed to fetch projects:", await res.text());
+    }
+  } catch (err) {
+    console.error("Error fetching projects:", err);
+  }
+  console.log(projects?.data?.data)
   return (
     <section className="container mx-auto my-10 px-5">
       <h1 className="text-4xl mb-4 text-center">Project Showcase</h1>

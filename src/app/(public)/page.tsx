@@ -6,16 +6,21 @@ import About from "@/components/modules/About/About";
 import Project from "@/components/modules/Project/Project";
 
 export default async function HomePage() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/post`, {
-    next: {
-      tags: ["BLOGS"]
+  let blogs = { data: { data: [] } };
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/post`, {
+      next: {
+        tags: ["BLOGS"]
+      }
+    });
+    if (res.ok) {
+      blogs = await res.json();
+    } else {
+      console.error("Failed to fetch posts:", await res.text());
     }
-  })
-  if (!res.ok) {
-  console.error("Failed to fetch posts:", await res.text());
-  return <div>Error loading posts</div>; 
-}
-  const blogs = await res.json()
+  } catch (err) {
+    console.error("Error fetching posts:", err);
+  }
   return (
     <div>
       <Hero />
