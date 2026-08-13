@@ -27,7 +27,7 @@ const Project = async () => {
   }
   
   return (
-    <div className="w-full bg-secondary pt-16">
+    <div id="projects" className="w-full bg-secondary pt-16">
       <section className="container mx-auto max-w-6xl px-6">
         <div className="text-center mb-10 space-y-4">
           <h2 className="text-3xl font-extrabold text-foreground tracking-tight sm:text-4xl uppercase">

@@ -38,13 +38,41 @@ const INTERESTS = [
 
 const About = () => {
   const { title, bio } = aboutMe;
+
+  // Calculate experience dynamically from February 2026
+  const getExperienceMonths = () => {
+    const joinDate = new Date("2026-02-01");
+    const currentDate = new Date();
+    const yearsDiff = currentDate.getFullYear() - joinDate.getFullYear();
+    const monthsDiff = currentDate.getMonth() - joinDate.getMonth();
+    const totalMonths = (yearsDiff * 12) + monthsDiff;
+    return totalMonths + 1; // Count Feb as month 1
+  };
+
+  const experienceMonths = getExperienceMonths();
   
   return (
-    <div className="w-full bg-secondary pt-16">
+    <div id="about" className="w-full bg-secondary pt-16">
       <section className="container mx-auto max-w-6xl px-6 pb-20">
         {/* Bio and Picture Section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-12">
-          {/* Left: Bio info & stats grid */}
+          {/* Left: Premium Framed Picture */}
+          <div className="flex-1 flex justify-center w-full md:w-auto order-first md:order-none">
+            <div className="relative group">
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-indigo-500 to-pink-500 opacity-20 blur-md group-hover:opacity-35 transition duration-500" />
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-3xl overflow-hidden border-2 border-border/40 shadow-2xl bg-secondary/15">
+                <Image
+                  src="https://res.cloudinary.com/dtb6o7zzr/image/upload/v1761583316/8c47f6c4-c1eb-47ca-930b-16a27e356809_ubtlb2.png"
+                  alt="Mayesha Mumtaz"
+                  fill
+                  className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Bio info & stats grid */}
           <div className="flex-1 space-y-6 text-left">
             <div className="space-y-2">
               <h2 className="text-3xl font-extrabold text-foreground tracking-tight sm:text-4xl uppercase">
@@ -61,60 +89,29 @@ const About = () => {
             {/* Premium Stats Grid */}
             <div className="grid grid-cols-2 gap-4 mt-8">
               <div className="glass-card p-5 rounded-2xl border border-border/40 hover:border-indigo-500/20 shadow-xs hover:shadow-md transition-all duration-300">
-                <div className="text-2xl font-black bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent">2+ Years</div>
+                <div className="text-2xl font-black bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent">
+                  {experienceMonths} Months
+                </div>
                 <div className="text-xs text-muted-foreground font-semibold uppercase tracking-wider mt-1">Experience</div>
               </div>
               <div className="glass-card p-5 rounded-2xl border border-border/40 hover:border-indigo-500/20 shadow-xs hover:shadow-md transition-all duration-300">
-                <div className="text-2xl font-black bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent">15+</div>
+                <div className="text-2xl font-black bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent">5+</div>
                 <div className="text-xs text-muted-foreground font-semibold uppercase tracking-wider mt-1">Projects Done</div>
-              </div>
-              <div className="glass-card p-5 rounded-2xl border border-border/40 hover:border-indigo-500/20 shadow-xs hover:shadow-md transition-all duration-300">
-                <div className="text-2xl font-black bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent">10+</div>
-                <div className="text-xs text-muted-foreground font-semibold uppercase tracking-wider mt-1">MERN Skills</div>
-              </div>
-              <div className="glass-card p-5 rounded-2xl border border-border/40 hover:border-indigo-500/20 shadow-xs hover:shadow-md transition-all duration-300">
-                <div className="text-2xl font-black bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent">100%</div>
-                <div className="text-xs text-muted-foreground font-semibold uppercase tracking-wider mt-1">Quality Rate</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Premium Framed Picture */}
-          <div className="flex-1 flex justify-center w-full md:w-auto">
-            <div className="relative group">
-              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-indigo-500 to-pink-500 opacity-20 blur-md group-hover:opacity-35 transition duration-500" />
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-3xl overflow-hidden border-2 border-border/40 shadow-2xl bg-secondary/15">
-                <Image
-                  src="https://res.cloudinary.com/dtb6o7zzr/image/upload/v1761583316/8c47f6c4-c1eb-47ca-930b-16a27e356809_ubtlb2.png"
-                  alt="Mayesha Mumtaz"
-                  fill
-                  className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                  priority
-                />
               </div>
             </div>
           </div>
         </div>
 
         {/* Education & Skills Section */}
-        <div className="grid md:grid-cols-2 gap-12 mt-24">
-          {/* Skill progress categories */}
-          <div className="space-y-6 text-left">
-            <h3 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2 uppercase mb-6">
-              <Code2 className="text-indigo-500" size={22} />
-              <span>Skills</span>
-            </h3>
-            <SkillProgress />
-          </div>
-
+        <div className="grid md:grid-cols-2 gap-12 mt-24 items-stretch">
           {/* Education timeline */}
-          <div className="space-y-6 text-left">
+          <div className="space-y-6 text-left h-full flex flex-col justify-between">
             <h3 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2 uppercase mb-6">
               <GraduationCap className="text-indigo-500" size={22} />
               <span>Education</span>
             </h3>
             
-            <div className="relative pl-6 border-l-2 border-border/60 space-y-8 ml-3">
+            <div className="relative pl-6 border-l-2 border-border/60 space-y-6 ml-3 flex-grow flex flex-col justify-center">
               {/* Card 1 */}
               <div className="relative">
                 <span className="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-background border-2 border-indigo-500 shadow-sm" />
@@ -156,6 +153,17 @@ const About = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Skill progress categories */}
+          <div className="space-y-6 text-left h-full flex flex-col justify-between">
+            <h3 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2 uppercase mb-6">
+              <Code2 className="text-indigo-500" size={22} />
+              <span>Skills</span>
+            </h3>
+            <div className="flex-grow flex flex-col justify-between">
+              <SkillProgress />
             </div>
           </div>
         </div>

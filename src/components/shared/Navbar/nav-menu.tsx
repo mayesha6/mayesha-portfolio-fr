@@ -18,10 +18,10 @@ export const NavMenu = ({ isLoggedIn, orientation = "horizontal", ...props }: Na
   const pathname = usePathname();
 
   const links = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-    { href: "/projects", label: "Projects" },
+    { href: "/#home", label: "Home" },
+    { href: "/#about", label: "About" },
+    { href: "/#projects", label: "Projects" },
+    { href: "/#contact", label: "Contact" },
   ];
 
   if (isLoggedIn) {

@@ -22,8 +22,8 @@ export default function Sidebar() {
       <section className="hidden md:flex flex-col w-64 h-screen border-r border-white/10 bg-black text-white shrink-0 sticky top-0">
         {/* Logo */}
         <div className="px-6 py-5 border-b border-white/10">
-          <Link href="/" className="text-xl font-black tracking-tight text-white block">
-            Mayesha<span className="text-indigo-500">.</span>
+          <Link href="/" className="text-xl font-black tracking-tight text-white block pb-1">
+            Mayesha<span className="text-primary">.</span>
           </Link>
         </div>
 
