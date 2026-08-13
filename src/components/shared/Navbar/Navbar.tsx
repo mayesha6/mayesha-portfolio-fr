@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -25,18 +25,19 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div className="flex items-center gap-3 md:gap-4">
-          {!session?.user && (
+          {session?.user ? (
+            <Button
+              className="rounded-full px-5 py-2 text-sm font-semibold cursor-pointer shadow-sm hover:scale-[1.02] transition-transform bg-destructive hover:bg-destructive/90 text-white"
+              onClick={() => signOut()}
+            >
+              Logout
+            </Button>
+          ) : (
             <Button asChild className="rounded-full px-5 py-2 text-sm font-semibold cursor-pointer shadow-sm hover:scale-[1.02] transition-transform">
               <Link href="/login">
                 Login
               </Link>
             </Button>
-          )}
-
-          {session?.user && (
-            <span className="text-sm font-semibold px-3 py-1.5 rounded-full bg-secondary text-foreground">
-              {session.user.name || session.user.email}
-            </span>
           )}
 
           <div className="md:hidden">

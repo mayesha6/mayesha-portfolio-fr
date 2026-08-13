@@ -1,88 +1,118 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 import { Home, LogOut, BookOpen, Edit3, FolderKanban, FilePlus } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 
 export default function Sidebar() {
+  const pathname = usePathname();
   const session = useSession();
+
+  const links = [
+    { href: "/dashboard/dashboardProjects", label: "Projects", icon: FolderKanban },
+    { href: "/dashboard/createProject", label: "Add Project", icon: FilePlus },
+    { href: "/dashboard/dashboardBlogs", label: "Blogs", icon: BookOpen },
+    { href: "/dashboard/createBlog", label: "Add Blog", icon: Edit3 },
+  ];
+
   return (
-    <section className="flex flex-row w-full md:h-screen md:w-64 md:flex-col border-r bg-black text-white">
-      <nav className="flex-1 md:space-y-2 p-4 flex flex-row md:flex-col items-center">
-        <Link
-          href="/"
-          className="md:w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-100 hover:text-black group relative"
-        >
-          <Home className="h-4 w-4" />
-          <span className="md:inline-block hidden">Home</span>
-          <span className="absolute top-full mt-2 hidden group-hover:block bg-[#fdc435] text-black text-xs rounded px-2 py-1 whitespace-nowrap">
-            Home
-          </span>
-        </Link>
-
-        <Link
-          href="/dashboard/dashboardProjects"
-          className="md:w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-100 hover:text-black group relative"
-        >
-          <FolderKanban className="h-4 w-4" />
-          <span className="md:inline-block hidden">Projects</span>
-          <span className="absolute top-full mt-2 hidden group-hover:block bg-[#fdc435] text-black text-xs rounded px-2 py-1 whitespace-nowrap">
-            Projects
-          </span>
-        </Link>
-
-        <Link
-          href="/dashboard/createProject"
-          className="md:w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-100 hover:text-black group relative"
-        >
-          <FilePlus className="h-4 w-4" />
-          <span className="md:inline-block hidden">Create Project</span>
-          <span className="absolute top-full mt-2 hidden group-hover:block bg-[#fdc435] text-black text-xs rounded px-2 py-1 whitespace-nowrap">
-            Create Project
-          </span>
-        </Link>
-
-        <Link
-          href="/dashboard/dashboardBlogs"
-          className="md:w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-100 hover:text-black group relative"
-        >
-          <BookOpen className="h-4 w-4" />
-          <span className="md:inline-block hidden">Blogs</span>
-          <span className="absolute top-full mt-2 hidden group-hover:block bg-[#fdc435] text-black text-xs rounded px-2 py-1 whitespace-nowrap">
-            Blogs
-          </span>
-        </Link>
-
-        <Link
-          href="/dashboard/createBlog"
-          className="md:w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-100 hover:text-black group relative"
-        >
-          <Edit3 className="h-4 w-4" />
-          <span className="md:inline-block hidden">Create Blog</span>
-          <span className="absolute top-full mt-2 hidden group-hover:block bg-[#fdc435] text-black text-xs rounded px-2 py-1 whitespace-nowrap">
-            Create Blog
-          </span>
-        </Link>
-      </nav>
-
-      {session.status === "authenticated" && (
-        <div className="p-4 border-t border-gray-500">
-          <Button
-            variant="destructive"
-            className="w-full justify-start gap-2 cursor-pointer group relative"
-            onClick={() => {
-              signOut();
-            }}
-          >
-            <LogOut className="h-4 w-4" />
-            <span className="md:inline-block hidden">Logout</span>
-            <span className="absolute top-full mt-2 hidden group-hover:block bg-[#fdc435] text-black text-xs rounded px-2 py-1 whitespace-nowrap">
-              Logout
-            </span>
-          </Button>
+    <>
+      {/* Desktop Sidebar (md and up) */}
+      <section className="hidden md:flex flex-col w-64 h-screen border-r border-white/10 bg-black text-white shrink-0 sticky top-0">
+        {/* Logo */}
+        <div className="px-6 py-5 border-b border-white/10">
+          <Link href="/" className="text-xl font-black tracking-tight text-white block">
+            Mayesha<span className="text-indigo-500">.</span>
+          </Link>
         </div>
-      )}
-    </section>
+
+        {/* Home navigation link */}
+        <div className="p-4 border-b border-white/10">
+          <Link
+            href="/"
+            className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-gray-400 hover:bg-white/5 hover:text-white transition-all duration-200"
+          >
+            <Home size={18} />
+            <span>Home Website</span>
+          </Link>
+        </div>
+
+        {/* Dashboard links */}
+        <nav className="flex-grow p-4 space-y-2">
+          {links.map((link) => {
+            const Icon = link.icon;
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 ${
+                  isActive
+                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/10"
+                    : "text-gray-400 hover:bg-white/5 hover:text-white"
+                }`}
+              >
+                <Icon size={18} />
+                <span>{link.label}</span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Logout section */}
+        {session.status === "authenticated" && (
+          <div className="p-4 border-t border-white/10">
+            <button
+              onClick={() => signOut()}
+              className="w-full flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all duration-200 cursor-pointer"
+            >
+              <LogOut size={18} />
+              <span>Logout</span>
+            </button>
+          </div>
+        )}
+      </section>
+
+      {/* Mobile Bottom Navigation Tab Bar (under md) */}
+      <div className="fixed bottom-0 left-0 right-0 h-16 bg-black/95 backdrop-blur-md border-t border-white/10 z-50 flex items-center md:hidden overflow-x-auto scrollbar-none px-4 shadow-2xl">
+        <div className="flex flex-row items-center gap-6 w-full min-w-max justify-between sm:justify-start">
+          <Link
+            href="/"
+            className="flex flex-col items-center gap-1.5 px-3 py-1.5 text-[11px] font-semibold text-gray-400 hover:text-white transition-colors whitespace-nowrap"
+          >
+            <Home size={20} />
+            <span>Home</span>
+          </Link>
+          {links.map((link) => {
+            const Icon = link.icon;
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`flex flex-col items-center gap-1.5 px-3 py-1.5 text-[11px] font-semibold transition-colors whitespace-nowrap ${
+                  isActive
+                    ? "text-indigo-400"
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
+                <Icon size={20} />
+                <span>{link.label}</span>
+              </Link>
+            );
+          })}
+          {session.status === "authenticated" && (
+            <button
+              onClick={() => signOut()}
+              className="flex flex-col items-center gap-1.5 px-3 py-1.5 text-[11px] font-semibold text-red-400 hover:text-red-300 transition-colors whitespace-nowrap cursor-pointer"
+            >
+              <LogOut size={20} />
+              <span>Logout</span>
+            </button>
+          )}
+        </div>
+      </div>
+    </>
   );
 }
