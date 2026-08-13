@@ -25,7 +25,7 @@ export default function ProjectCoverflow({ projects }: { projects: IProject[] })
   }
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto px-4 py-12 flex flex-col items-center">
+    <div className="relative w-full max-w-6xl mx-auto px-4 py-12 flex flex-col items-center">
       {/* 3D Perspective Wrapper */}
       <div 
         className="relative w-full h-[520px] sm:h-[480px] flex items-center justify-center overflow-hidden"

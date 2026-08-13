@@ -19,7 +19,6 @@ export const NavMenu = ({ isLoggedIn, orientation = "horizontal", ...props }: Na
 
   const links = [
     { href: "/", label: "Home" },
-    { href: "/blogs", label: "Blogs" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
     { href: "/projects", label: "Projects" },

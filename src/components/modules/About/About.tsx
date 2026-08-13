@@ -41,7 +41,7 @@ const About = () => {
   
   return (
     <div className="w-full bg-secondary pt-16">
-      <section className="container mx-auto max-w-5xl px-6 pb-20">
+      <section className="container mx-auto max-w-6xl px-6 pb-20">
         {/* Bio and Picture Section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-12">
           {/* Left: Bio info & stats grid */}

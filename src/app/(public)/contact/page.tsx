@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { Phone, Mail, Send, MapPin } from "lucide-react";
 import Wave from "@/components/shared/Wave";
 
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -159,6 +160,9 @@ export default function ContactPage() {
         </div>
       </div>
     </section>
+    
+    {/* Bottom Wave transitioning to Footer (bg-secondary) */}
+    <Wave fillColor="text-secondary" />
   </div>
   );
 }

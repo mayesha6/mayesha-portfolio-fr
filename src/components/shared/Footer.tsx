@@ -2,8 +2,8 @@ import { Github, Facebook, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-background py-12">
-      <div className="container mx-auto px-6 max-w-5xl">
+    <footer className="w-full bg-secondary py-12">
+      <div className="container mx-auto px-6 max-w-6xl">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
           <div className="space-y-1">
             <h2 className="text-xl font-black tracking-tight text-foreground">

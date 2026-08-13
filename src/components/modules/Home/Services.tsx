@@ -38,7 +38,7 @@ const SERVICES = [
 export default function Services() {
   return (
     <div className="w-full bg-background pt-16">
-      <section className="container mx-auto max-w-5xl px-6 pb-20">
+      <section className="container mx-auto max-w-6xl px-6 pb-20">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-3xl font-extrabold text-foreground tracking-tight sm:text-4xl uppercase">
             What I Do

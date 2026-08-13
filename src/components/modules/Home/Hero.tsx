@@ -11,7 +11,7 @@ export default async function Hero() {
       <div className="absolute top-1/4 left-1/10 w-72 h-72 rounded-full bg-indigo-500/10 blur-3xl animate-pulse-glow" />
       <div className="absolute bottom-1/4 right-1/10 w-96 h-96 rounded-full bg-pink-500/10 blur-3xl animate-float" />
       
-      <section className="container mx-auto px-6 max-w-5xl z-10 flex-grow flex items-center">
+      <section className="container mx-auto px-6 max-w-6xl z-10 flex-grow flex items-center">
         <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-12 md:gap-8 w-full">
           {/* Info Side */}
           <div className="flex-1 text-left space-y-4">

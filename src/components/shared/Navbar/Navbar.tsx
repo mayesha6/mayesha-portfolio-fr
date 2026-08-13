@@ -10,7 +10,7 @@ const Navbar = () => {
   const { data: session } = useSession();
 
   return (
-    <nav className="fixed top-6 inset-x-4 h-16 max-w-5xl mx-auto rounded-full backdrop-blur-md bg-background/75 border border-border/50 shadow-md shadow-black/5 z-50">
+    <nav className="fixed top-6 inset-x-4 h-16 max-w-6xl mx-auto rounded-full backdrop-blur-md bg-background/75 border border-border/50 shadow-md shadow-black/5 z-50">
       <div className="flex h-full items-center justify-between px-6 md:px-8">
         {/* Logo */}
         <Link

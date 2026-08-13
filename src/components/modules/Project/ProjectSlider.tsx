@@ -52,7 +52,7 @@ export default function ProjectSlider({ projects }: { projects: IProject[] }) {
   }
 
   return (
-    <div className="relative group/slider max-w-5xl mx-auto px-4">
+    <div className="relative group/slider max-w-6xl mx-auto px-4">
       {/* Slider Controls */}
       {showLeftArrow && (
         <button
