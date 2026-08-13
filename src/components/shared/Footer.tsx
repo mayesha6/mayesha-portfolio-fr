@@ -9,7 +9,7 @@ export default function Footer() {
             <h2 className="text-xl font-black tracking-tight text-foreground">
               Mayesha<span className="text-primary">.</span>
             </h2>
-            <p className="text-xs text-muted-foreground">Frontend & MERN Stack Developer</p>
+            <p className="text-xs text-muted-foreground">MERN Stack Developer</p>
           </div>
 
           {/* Social media icons in place of menu */}

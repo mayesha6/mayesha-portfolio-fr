@@ -75,7 +75,7 @@ export default function Sidebar() {
       </section>
 
       {/* Mobile Bottom Navigation Tab Bar (under md) */}
-      <div className="fixed bottom-0 left-0 right-0 h-16 bg-black/95 backdrop-blur-md border-t border-white/10 z-50 flex items-center md:hidden overflow-x-auto scrollbar-none px-4 shadow-2xl">
+      <div className="fixed bottom-0 left-0 right-0 h-16 bg-black/95 backdrop-blur-md border-t border-white/10 z-50 flex items-center md:hidden overflow-x-auto overflow-y-hidden scrollbar-none px-4 shadow-2xl">
         <div className="flex flex-row items-center gap-6 w-full min-w-max justify-between sm:justify-start">
           <Link
             href="/"

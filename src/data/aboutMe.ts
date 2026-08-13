@@ -1,6 +1,6 @@
 export const aboutMe = {
   name: "Mayesha Mumtaz Soumy",
-  title: "Frontend & MERN Stack Developer",
+  title: "MERN Stack Developer",
   contact: {
     email: "soumy.dev@gmail.com",
     phone: "+8801XXXXXXXXX",
@@ -25,7 +25,7 @@ I love writing clean, maintainable code and continuously learning new technologi
     "Tailwind CSS", 
     "Bootstrap", 
     "Firebase",
-    "VPS (AWS)",
+    "Hostinger VPS & AWS (EC2, S3, IVS)",
     "PSD to HTML",
     "XD to HTML"
   ],

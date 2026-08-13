@@ -19,7 +19,7 @@ const BACKEND_SKILLS = [
 ];
 
 const DEVOPS_SKILLS = [
-  { name: "VPS (AWS EC2 / LightSail)", level: 85 },
+  { name: "Hostinger VPS & AWS (EC2, S3, IVS)", level: 85 },
   { name: "Nginx & SSL Configuration", level: 82 }
 ];
 
