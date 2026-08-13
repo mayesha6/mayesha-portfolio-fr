@@ -10,31 +10,31 @@ const Navbar = () => {
   const { data: session } = useSession();
 
   return (
-    <nav className="fixed top-6 inset-x-4 h-16 max-w-screen-xl mx-auto rounded-full bg-background border dark:border-slate-700/70 z-30">
+    <nav className="fixed top-6 inset-x-4 h-16 max-w-5xl mx-auto rounded-full backdrop-blur-md bg-background/75 border border-border/50 shadow-md shadow-black/5 z-50">
       <div className="flex h-full items-center justify-between px-6 md:px-8">
         {/* Logo */}
         <Link
           href="/"
-          className="text-lg font-bold tracking-wide text-[#25282B]"
+          className="text-xl font-black tracking-tight text-foreground hover:opacity-85 transition-opacity"
         >
-          Mayesha.
+          Mayesha<span className="text-primary">.</span>
         </Link>
 
         {/* Desktop Menu */}
         <NavMenu className="hidden md:block" isLoggedIn={!!session?.user} />
 
         {/* Mobile Menu */}
-        <div className="flex items-center gap-4 md:gap-6">
+        <div className="flex items-center gap-3 md:gap-4">
           {!session?.user && (
-            <Button className="rounded-full px-5 py-2 text-sm md:text-base">
-              <Link href="/login" className="block w-full text-center">
+            <Button asChild className="rounded-full px-5 py-2 text-sm font-semibold cursor-pointer shadow-sm hover:scale-[1.02] transition-transform">
+              <Link href="/login">
                 Login
               </Link>
             </Button>
           )}
 
           {session?.user && (
-            <span className="text-sm font-medium">
+            <span className="text-sm font-semibold px-3 py-1.5 rounded-full bg-secondary text-foreground">
               {session.user.name || session.user.email}
             </span>
           )}

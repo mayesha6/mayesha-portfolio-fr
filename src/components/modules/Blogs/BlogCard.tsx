@@ -3,79 +3,85 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { Eye, ArrowUpRight } from "lucide-react";
 
 export default function BlogCard({ post }: { post: any; user?: any }) {
   return (
-    <div className="relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group">
+    <div className="group glass-card border border-border/40 hover:border-indigo-500/20 shadow-md hover:shadow-lg rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-full">
       <Link
         href={`/blogs/${post.id}`}
-        className="block transform hover:-translate-y-1 transition-transform duration-300"
+        className="block flex-grow flex flex-col"
       >
         {post.thumbnail ? (
-          <div className="relative h-56 w-full overflow-hidden">
+          <div className="relative h-48 w-full overflow-hidden bg-muted">
             <Image
               src={post.thumbnail}
               alt={post.title}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
         ) : (
-          <div className="h-56 w-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-300">
-            No Image
+          <div className="h-48 w-full bg-secondary flex items-center justify-center text-muted-foreground text-sm font-semibold">
+            No Thumbnail Image
           </div>
         )}
 
-        <div className="p-6">
-          <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
-            {post.title}
-          </h3>
+        <div className="p-6 flex flex-col flex-grow justify-between">
+          <div>
+            <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-1 leading-snug">
+              {post.title}
+            </h3>
 
-          <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
-            {post.content}
-          </p>
-
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <Image
-                src={
-                  post?.author?.picture ||
-                  "https://cdn-icons-png.flaticon.com/512/9385/9385289.png"
-                }
-                alt={post?.author?.name}
-                width={36}
-                height={36}
-                className="rounded-full border-2 border-gray-200 dark:border-gray-700"
-              />
-              <span className="text-gray-600 dark:text-gray-300 text-sm flex items-center gap-1">
-                {post?.author?.name}
-                {post?.author?.isVerified && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 text-blue-500"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={3}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                )}
-              </span>
-            </div>
-            <span className="text-gray-500 dark:text-gray-400 text-sm">
-              {post.views} views
-            </span>
+            <p className="text-muted-foreground text-sm mb-6 line-clamp-2 leading-relaxed">
+              {post.content}
+            </p>
           </div>
 
-          <div className="text-right">
-            <span className="text-blue-600 dark:text-blue-400 font-semibold text-sm hover:underline">
-              Read More →
-            </span>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between pt-4 border-t border-border/40">
+              <div className="flex items-center gap-2.5">
+                <Image
+                  src={
+                    post?.author?.picture ||
+                    "https://cdn-icons-png.flaticon.com/512/9385/9385289.png"
+                  }
+                  alt={post?.author?.name || "Author"}
+                  width={28}
+                  height={28}
+                  className="rounded-full border border-border/60"
+                />
+                <span className="text-foreground/80 font-medium text-xs flex items-center gap-1">
+                  {post?.author?.name}
+                  {post?.author?.isVerified && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-3.5 w-3.5 text-indigo-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={3}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  )}
+                </span>
+              </div>
+              <span className="text-muted-foreground text-xs flex items-center gap-1">
+                <Eye size={14} />
+                <span>{post.views} views</span>
+              </span>
+            </div>
+
+            <div className="flex items-center justify-end text-primary group-hover:text-primary/80 font-semibold text-xs transition-colors">
+              <span>Read Article</span>
+              <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </div>
           </div>
         </div>
       </Link>
