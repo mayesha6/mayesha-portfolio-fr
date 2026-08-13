@@ -15,9 +15,9 @@ export const NavigationSheet = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
       <SheetContent side="top" className="p-4 flex flex-col items-start justify-start">
         <Link
           href="/"
-          className="text-lg font-bold tracking-wide text-[#25282B]"
+          className="text-lg font-black tracking-tight text-foreground"
         >
-          Mayesha.
+          Mayesha<span className="text-primary">.</span>
         </Link>
         <NavMenu orientation="vertical" className="mt-12" isLoggedIn={isLoggedIn} />
       </SheetContent>

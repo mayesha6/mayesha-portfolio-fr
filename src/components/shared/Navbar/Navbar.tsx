@@ -15,7 +15,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link
           href="/"
-          className="text-xl font-black tracking-tight text-foreground hover:opacity-85 transition-opacity"
+          className="text-xl font-black tracking-tight text-foreground hover:opacity-85 transition-opacity pb-1"
         >
           Mayesha<span className="text-primary">.</span>
         </Link>
