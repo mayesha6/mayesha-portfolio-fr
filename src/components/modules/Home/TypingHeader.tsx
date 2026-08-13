@@ -3,10 +3,8 @@
 import React, { useState, useEffect } from "react";
 
 const ROLES = [
+  "Backend Developer.",
   "MERN Stack Developer.",
-  "Frontend Specialist.",
-  "React Creator.",
-  "Full-Stack Programmer.",
 ];
 
 export default function TypingHeader() {
@@ -52,7 +50,7 @@ export default function TypingHeader() {
   return (
     <div className="text-xl sm:text-2xl font-semibold text-muted-foreground min-h-[36px]">
       I am a{" "}
-      <span className="text-primary font-bold border-r-2 border-primary/60 pr-1 animate-pulse">
+      <span className="text-foreground font-bold border-r-2 border-foreground/60 pr-1 animate-pulse">
         {currentText}
       </span>
     </div>
