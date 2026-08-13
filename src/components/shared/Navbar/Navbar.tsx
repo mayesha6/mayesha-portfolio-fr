@@ -28,7 +28,7 @@ const Navbar = () => {
           {session?.user ? (
             <Button
               className="rounded-full px-5 py-2 text-sm font-semibold cursor-pointer shadow-sm hover:scale-[1.02] transition-transform bg-destructive hover:bg-destructive/90 text-white"
-              onClick={() => signOut()}
+              onClick={() => signOut({ callbackUrl: "/login" })}
             >
               Logout
             </Button>

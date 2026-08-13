@@ -64,7 +64,7 @@ export default function Sidebar() {
         {session.status === "authenticated" && (
           <div className="p-4 border-t border-white/10">
             <button
-              onClick={() => signOut()}
+              onClick={() => signOut({ callbackUrl: "/login" })}
               className="w-full flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all duration-200 cursor-pointer"
             >
               <LogOut size={18} />
@@ -104,7 +104,7 @@ export default function Sidebar() {
           })}
           {session.status === "authenticated" && (
             <button
-              onClick={() => signOut()}
+              onClick={() => signOut({ callbackUrl: "/login" })}
               className="flex flex-col items-center gap-1.5 px-3 py-1.5 text-[11px] font-semibold text-red-400 hover:text-red-300 transition-colors whitespace-nowrap cursor-pointer"
             >
               <LogOut size={20} />

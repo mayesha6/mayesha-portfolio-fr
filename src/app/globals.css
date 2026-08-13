@@ -168,3 +168,12 @@
     @apply bg-background text-foreground antialiased selection:bg-indigo-500/30 selection:text-indigo-200;
   }
 }
+
+/* Hide scrollbars custom utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
