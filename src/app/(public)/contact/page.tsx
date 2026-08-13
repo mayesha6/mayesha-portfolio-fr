@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Github, Facebook, Linkedin, Phone, Mail, Send, MapPin } from "lucide-react";
+import { Phone, Mail, Send, MapPin } from "lucide-react";
 import Wave from "@/components/shared/Wave";
 
 export default function ContactPage() {
@@ -31,8 +31,8 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="w-full bg-secondary pt-16">
-      <section className="container mx-auto max-w-5xl px-6 pb-20">
+    <div className="w-full bg-background pt-16">
+      <section className="container mx-auto max-w-6xl px-6 pb-20">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-3xl font-extrabold text-foreground tracking-tight sm:text-4xl uppercase">
             Get in Touch
@@ -88,39 +88,6 @@ export default function ContactPage() {
                   Dhaka, Bangladesh
                 </p>
               </div>
-            </div>
-          </div>
-
-          <div className="space-y-3 pt-4">
-            <p className="text-xs text-muted-foreground font-semibold uppercase tracking-wider">Follow Me</p>
-            <div className="flex gap-2">
-              <a
-                href="https://github.com/mayesha6"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary hover:bg-indigo-500 hover:text-white border border-border/50 text-foreground transition-all cursor-pointer"
-                aria-label="GitHub Profile"
-              >
-                <Github size={18} />
-              </a>
-              <a
-                href="https://www.facebook.com/mayesha.soumy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary hover:bg-indigo-500 hover:text-white border border-border/50 text-foreground transition-all cursor-pointer"
-                aria-label="Facebook Profile"
-              >
-                <Facebook size={18} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/mayesha-mumtaz-6607b4315"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary hover:bg-indigo-500 hover:text-white border border-border/50 text-foreground transition-all cursor-pointer"
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin size={18} />
-              </a>
             </div>
           </div>
         </div>
@@ -192,9 +159,6 @@ export default function ContactPage() {
         </div>
       </div>
     </section>
-    
-    {/* Bottom Wave transitioning to Footer (bg-background) */}
-    <Wave fillColor="text-background" />
   </div>
   );
 }

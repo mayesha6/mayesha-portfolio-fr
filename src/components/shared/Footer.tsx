@@ -1,8 +1,8 @@
-import Link from "next/link";
+import { Github, Facebook, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-background border-t border-border/40 py-12">
+    <footer className="w-full bg-background py-12">
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
           <div className="space-y-1">
@@ -12,25 +12,35 @@ export default function Footer() {
             <p className="text-xs text-muted-foreground">Frontend & MERN Stack Developer</p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
-              Home
-            </Link>
-            <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
-              About
-            </Link>
-            <Link
-              href="/projects"
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+          {/* Social media icons in place of menu */}
+          <div className="flex justify-center gap-3">
+            <a
+              href="https://github.com/mayesha6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary/80 hover:bg-indigo-500 hover:text-white border border-border/50 text-foreground transition-all cursor-pointer"
+              aria-label="GitHub Profile"
             >
-              Projects
-            </Link>
-            <Link
-              href="/contact"
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+              <Github size={16} />
+            </a>
+            <a
+              href="https://www.facebook.com/mayesha.soumy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary/80 hover:bg-indigo-500 hover:text-white border border-border/50 text-foreground transition-all cursor-pointer"
+              aria-label="Facebook Profile"
             >
-              Contact
-            </Link>
+              <Facebook size={16} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mayesha-mumtaz-6607b4315"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary/80 hover:bg-indigo-500 hover:text-white border border-border/50 text-foreground transition-all cursor-pointer"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin size={16} />
+            </a>
           </div>
 
           <div className="text-xs text-muted-foreground font-medium">

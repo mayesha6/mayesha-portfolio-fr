@@ -37,3 +37,39 @@ export const login = async (data: FieldValues) => {
 
   return json; // return parsed JSON
 };
+
+export const forgotPassword = async (email: string) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/auth/forgot-password`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  });
+  const json = await res.json();
+
+  if (!res.ok) {
+    console.error("Forgot password failed", json);
+    throw new Error(json?.message || "Forgot password request failed");
+  }
+
+  return json;
+};
+
+export const resetPassword = async (data: FieldValues) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/auth/reset-password`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  const json = await res.json();
+
+  if (!res.ok) {
+    console.error("Reset password failed", json);
+    throw new Error(json?.message || "Reset password failed");
+  }
+
+  return json;
+};

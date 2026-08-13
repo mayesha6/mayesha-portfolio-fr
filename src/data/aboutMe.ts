@@ -20,9 +20,12 @@ I love writing clean, maintainable code and continuously learning new technologi
     "Node.js", 
     "Express.js", 
     "MongoDB", 
+    "PostgreSQL",
+    "Prisma",
     "Tailwind CSS", 
     "Bootstrap", 
     "Firebase",
+    "VPS (AWS)",
     "PSD to HTML",
     "XD to HTML"
   ],
